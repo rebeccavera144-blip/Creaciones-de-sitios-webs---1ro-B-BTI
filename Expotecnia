@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cómo crear sitios web — Proyecto</title>
+<style>
+    :root{
+      --bg:#f1f5f9; /* gris claro */
+      --card:#ffffff;
+      --accent:#1e3a8a; /* azul oscuro */
+      --accent-light:#3b82f6; /* azul claro */
+      --text:#0f172a;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text); line-height:1.45}
+    header{background:linear-gradient(90deg,var(--accent),var(--accent-light));padding:1.25rem 1rem;color:white}
+    .container{max-width:960px;margin:0 auto;padding:1rem}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{opacity:.95}
+    nav{display:flex;gap:.5rem;align-items:center;margin-top:.6rem;flex-wrap:wrap}
+    nav a{background:var(--card);padding:.45rem .6rem;border-radius:8px;text-decoration:none;color:var(--accent);box-shadow:0 1px 2px rgba(15,23,42,.06);font-weight:500}
+    main{display:grid;grid-template-columns:1fr;gap:1rem;padding:1rem}
+    .card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,.08)}
+    section + section{margin-top:.75rem}
+    h2{font-size:1.1rem;margin:0 0 .5rem;color:var(--accent)}
+    ul{padding-left:1.1rem}
+    footer{text-align:center;padding:1rem;font-size:.9rem;color:#475569}
+    .muted{color:#64748b;font-size:.95rem}
+    .btn{display:inline-block;padding:.45rem .6rem;border-radius:8px;background:var(--accent);color:white;text-decoration:none}
+    pre{white-space:pre-wrap;background:#1e293b;color:#f8fafc;padding:.6rem;border-radius:8px;overflow:auto}
+    .toc{display:flex;flex-wrap:wrap;gap:.5rem}
+    .toc a{font-size:.9rem;color:var(--accent-light);text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Cómo crear sitios web — Proyecto de investigación</h1>
+      <nav class="toc" aria-label="Índice rápido">
+        <a href="#hipotesis">Hipótesis</a>
+        <a href="#delimitacion">Delimitación</a>
+        <a href="#justificacion">Justificación</a>
+        <a href="#definicion">¿Qué es un sitio web?</a>
+        <a href="#tipos">Tipos</a>
+        <a href="#historia">Historia</a>
+        <a href="#como-hacer">Cómo hacer un sitio web</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div>
+      <section id="hipotesis" class="card">
+        <h2>Hipótesis</h2>
+        <p>Con este proyecto se busca aprender y enseñar el proceso de creación de sitios web, tanto desde cero utilizando lenguajes de programación básicos (HTML, CSS, JavaScript), como mediante el uso de aplicaciones o plataformas que facilitan el diseño y publicación de páginas, así para ver alternativas de creación de sitios webs tanto para personas que ya tienen conocimiento sobre programación y para personas que no se tienen conocimientos programación.</p>
+      </section>
+
+      <section id="delimitacion" class="card">
+        <h2>Delimitación de la investigación</h2>
+        <p>Este proyecto se enfocará en conocer las herramientas más accesibles para crear sitios web, limitándose al uso de plataformas visuales como Wix, Google Sites y Webnode, y a una introducción básica a la programación con HTML. No se incluirá el uso de bases de datos, lenguajes de programación avanzados como JavaScript ni la configuración avanzada. El proyecto se centrará únicamente en la diferencia entre el uso de plantillas y la creación básica con código.</p>
+      </section>
+
+      <section id="justificacion" class="card">
+        <h2>Justificación</h2>
+        <p>Decidimos tomar este tema ya que nos interesó mucho la creación de sitios web. Hoy en días las páginas web son fundamentales para casi todo, desde buscar información hasta comprar cosas o promocionar un negocio. Nos pareció importante aprender cómo se crean, como estudiantes del primer año de Bachillerato Técnico en la Informática queremos empezar a conocer herramientas básicas que nos permitan crear sitios web, aunque no sepamos programar de forma avanzada. También queremos entender qué opciones existen y qué ventajas tiene cada una, ya sea usar una plantilla o programar desde cero. Este proyecto nos aparece una buena oportunidad para aprender algo nuevo que puede servirnos tanto ahora como en el futuro.</p>
+      </section>
+
+      <section id="definicion" class="card">
+        <h2>¿Qué son los Sitios Webs?</h2>
+        <p>Un sitio web es un conjunto de páginas web bajo un mismo nombre de dominio. Una página web es un documento o información en línea que se encuentra alojada en un servidor de Internet. Estas páginas suelen contener texto, imágenes, vídeos u otros contenidos multimedia que los usuarios pueden ver a través de su navegador web.</p>
+      </section>
+
+      <section id="tipos" class="card">
+        <h2>Tipos de Sitios Webs</h2>
+        <p>Existen muchas variedades de sitios web. A continuación se listan algunas categorías y ejemplos representativos:</p>
+        <ul>
+          <li><strong>Sitio archivo</strong>: p. ej. Internet Archive.</li>
+          <li><strong>Blog</strong>: p. ej. WordPress.</li>
+          <li><strong>Sitio de empresa</strong>, <strong>e-commerce</strong>: p. ej. Amazon.</li>
+          <li><strong>Comunidad virtual</strong>: p. ej. Facebook.</li>
+          <li><strong>Sitio de base de datos</strong>: p. ej. IMDb.</li>
+          <li><strong>Otros:</strong> directorios, descargas, juegos, noticias, streaming (Netflix/YouTube), portales, colaborativos (Wikipedia), educativos, políticos, religiosos, etc.</li>
+        </ul>
+      </section>
+
+      <section id="historia" class="card">
+        <h2>Historia de los Sitios Webs</h2>
+        <p>La Web se desarrolló entre mayo de 1989 y diciembre de 1990 por Tim Berners-Lee (con la ayuda de Robert Cailliau) en el CERN, y se publicó en 1991. Desde entonces la web ha evolucionado de páginas estáticas a aplicaciones interactivas y servicios inteligentes que integran bases de datos, APIs y en algunos casos inteligencia artificial.</p>
+        <p>En los primeros años, los sitios eran puramente informativos y muy básicos. Con el tiempo surgieron navegadores más avanzados, se incorporaron imágenes, estilos y más tarde lenguajes como JavaScript. Hoy en día los sitios web son dinámicos, interactivos y fundamentales en la vida diaria.</p>
+      </section>
+
+      <section id="como-hacer" class="card">
+        <h2>Cómo hacer un sitio web (una guía resumida)</h2>
+        <ol>
+          <li><strong>Planifica:</strong> define el objetivo, público, contenidos y estructura de tu web.</li>
+          <li><strong>Elige la vía:</strong> usar una plantilla (Wix/Google Sites/Webnode) o programar con código (HTML, CSS básico).</li>
+          <li><strong>Diseño:</strong> selecciona la plantilla o dibuja un esquema de cómo quieres que se vea.</li>
+          <li><strong>Desarrollo:</strong> si usas código, crea archivos como <code>index.html</code> y <code>styles.css</code>. Si usas plantilla, edita los bloques prediseñados.</li>
+          <li><strong>Contenido:</strong> agrega textos, imágenes, enlaces y metadatos relevantes.</li>
+          <li><strong>Pruebas:</strong> revisa en diferentes navegadores y dispositivos.</li>
+          <li><strong>Publica:</strong> sube tu web a un hosting y compra un dominio o publica directamente desde la plataforma usada.</li>
+          <li><strong>Mantenimiento:</strong> actualiza, mejora y corrige errores regularmente.</li>
+        </ol>
+        <p class="muted">Tip: Usa la extensión Live Server en VS Code para ver cambios al instante mientras programas.</p>
+      </section>
+
+      <section id="pasos-practicos" class="card">
+        <h2>Ejemplo mínimo (archivos)</h2>
+        <p>Si eliges programar desde cero, crea al menos estos archivos:</p>
+        <pre>index.html
+styles.css
+script.js (opcional)</pre>
+        <p>En VS Code guarda <code>index.html</code> y ábrelo con Live Server para visualizar.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
