@@ -3,128 +3,364 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cómo crear sitios web — Proyecto</title>
-<style>
-    :root{
-      --bg:#f1f5f9; /* gris claro */
-      --card:#ffffff;
-      --accent:#1e3a8a; /* azul oscuro */
-      --accent-light:#3b82f6; /* azul claro */
-      --text:#0f172a;
+  <title>Proyecto: Cómo crear sitios web</title>
+
+  <style>
+    :root {
+      --fondo: #f1f5f9;
+      --principal: #1e3a8a;
+      --secundario: #3b82f6;
+      --texto: #0f172a;
+      --blanco: #fff;
     }
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text); line-height:1.45}
-    header{background:linear-gradient(90deg,var(--accent),var(--accent-light));padding:1.25rem 1rem;color:white}
-    .container{max-width:960px;margin:0 auto;padding:1rem}
-    h1{margin:0;font-size:1.6rem}
-    p.lead{opacity:.95}
-    nav{display:flex;gap:.5rem;align-items:center;margin-top:.6rem;flex-wrap:wrap}
-    nav a{background:var(--card);padding:.45rem .6rem;border-radius:8px;text-decoration:none;color:var(--accent);box-shadow:0 1px 2px rgba(15,23,42,.06);font-weight:500}
-    main{display:grid;grid-template-columns:1fr;gap:1rem;padding:1rem}
-    .card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,.08)}
-    section + section{margin-top:.75rem}
-    h2{font-size:1.1rem;margin:0 0 .5rem;color:var(--accent)}
-    ul{padding-left:1.1rem}
-    footer{text-align:center;padding:1rem;font-size:.9rem;color:#475569}
-    .muted{color:#64748b;font-size:.95rem}
-    .btn{display:inline-block;padding:.45rem .6rem;border-radius:8px;background:var(--accent);color:white;text-decoration:none}
-    pre{white-space:pre-wrap;background:#1e293b;color:#f8fafc;padding:.6rem;border-radius:8px;overflow:auto}
-    .toc{display:flex;flex-wrap:wrap;gap:.5rem}
-    .toc a{font-size:.9rem;color:var(--accent-light);text-decoration:none}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ENCABEZADO */
+    header {
+      background: linear-gradient(90deg, var(--principal), var(--secundario));
+      color: white;
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    }
+    header h1 {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: .5rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+    nav a {
+      color: var(--principal);
+      background: var(--blanco);
+      padding: .5rem .8rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .3s;
+    }
+    nav a:hover {
+      background: var(--secundario);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* CONTENIDO */
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    section {
+      background: var(--blanco);
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.08);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      color: var(--principal);
+      margin-bottom: .7rem;
+      border-left: 5px solid var(--secundario);
+      padding-left: .5rem;
+    }
+    p { margin-bottom: .7rem; text-align: justify; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: .7rem; }
+    li { margin-bottom: .3rem; }
+
+    /* PIE DE PÁGINA */
+    footer {
+      background: var(--principal);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* BOTÓN VOLVER ARRIBA */
+    #top-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--secundario);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      transition: .3s;
+    }
+    #top-btn:hover { background: var(--principal); transform: scale(1.1); }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
   </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <h1>Cómo crear sitios web — Proyecto de investigación</h1>
-      <nav class="toc" aria-label="Índice rápido">
-        <a href="#hipotesis">Hipótesis</a>
-        <a href="#delimitacion">Delimitación</a>
-        <a href="#justificacion">Justificación</a>
-        <a href="#definicion">¿Qué es un sitio web?</a>
-        <a href="#tipos">Tipos</a>
-        <a href="#historia">Historia</a>
-        <a href="#como-hacer">Cómo hacer un sitio web</a>
-      </nav>
-    </div>
-  </header>
+</head><style>
+  /* ---- EFECTOS EXTRA ---- */
+  html {
+    scroll-behavior: smooth;
+  }
 
-  <main class="container">
-    <div>
-      <section id="hipotesis" class="card">
-        <h2>Hipótesis</h2>
-        <p>Con este proyecto se busca aprender y enseñar el proceso de creación de sitios web, tanto desde cero utilizando lenguajes de programación básicos (HTML, CSS, JavaScript), como mediante el uso de aplicaciones o plataformas que facilitan el diseño y publicación de páginas, así para ver alternativas de creación de sitios webs tanto para personas que ya tienen conocimiento sobre programación y para personas que no se tienen conocimientos programación.</p>
-      </section>
+  /* Efecto de entrada suave para las tarjetas */
+  .card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
 
-      <section id="delimitacion" class="card">
-        <h2>Delimitación de la investigación</h2>
-        <p>Este proyecto se enfocará en conocer las herramientas más accesibles para crear sitios web, limitándose al uso de plataformas visuales como Wix, Google Sites y Webnode, y a una introducción básica a la programación con HTML. No se incluirá el uso de bases de datos, lenguajes de programación avanzados como JavaScript ni la configuración avanzada. El proyecto se centrará únicamente en la diferencia entre el uso de plantillas y la creación básica con código.</p>
-      </section>
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
 
-      <section id="justificacion" class="card">
-        <h2>Justificación</h2>
-        <p>Decidimos tomar este tema ya que nos interesó mucho la creación de sitios web. Hoy en días las páginas web son fundamentales para casi todo, desde buscar información hasta comprar cosas o promocionar un negocio. Nos pareció importante aprender cómo se crean, como estudiantes del primer año de Bachillerato Técnico en la Informática queremos empezar a conocer herramientas básicas que nos permitan crear sitios web, aunque no sepamos programar de forma avanzada. También queremos entender qué opciones existen y qué ventajas tiene cada una, ya sea usar una plantilla o programar desde cero. Este proyecto nos aparece una buena oportunidad para aprender algo nuevo que puede servirnos tanto ahora como en el futuro.</p>
-      </section>
+  /* Animación general al cargar los textos */
+  [data-animar] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.9s ease;
+  }
 
-      <section id="definicion" class="card">
-        <h2>¿Qué son los Sitios Webs?</h2>
-        <p>Un sitio web es un conjunto de páginas web bajo un mismo nombre de dominio. Una página web es un documento o información en línea que se encuentra alojada en un servidor de Internet. Estas páginas suelen contener texto, imágenes, vídeos u otros contenidos multimedia que los usuarios pueden ver a través de su navegador web.</p>
-      </section>
+  [data-animar].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-      <section id="tipos" class="card">
-        <h2>Tipos de Sitios Webs</h2>
-        <p>Existen muchas variedades de sitios web. A continuación se listan algunas categorías y ejemplos representativos:</p>
-        <ul>
-          <li><strong>Sitio archivo</strong>: p. ej. Internet Archive.</li>
-          <li><strong>Blog</strong>: p. ej. WordPress.</li>
-          <li><strong>Sitio de empresa</strong>, <strong>e-commerce</strong>: p. ej. Amazon.</li>
-          <li><strong>Comunidad virtual</strong>: p. ej. Facebook.</li>
-          <li><strong>Sitio de base de datos</strong>: p. ej. IMDb.</li>
-          <li><strong>Otros:</strong> directorios, descargas, juegos, noticias, streaming (Netflix/YouTube), portales, colaborativos (Wikipedia), educativos, políticos, religiosos, etc.</li>
-        </ul>
-      </section>
+  /* Botón flotante para volver arriba */
+  #volver-arriba {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    display: none;
+    transition: 0.4s;
+  }
 
-      <section id="historia" class="card">
-        <h2>Historia de los Sitios Webs</h2>
-        <p>La Web se desarrolló entre mayo de 1989 y diciembre de 1990 por Tim Berners-Lee (con la ayuda de Robert Cailliau) en el CERN, y se publicó en 1991. Desde entonces la web ha evolucionado de páginas estáticas a aplicaciones interactivas y servicios inteligentes que integran bases de datos, APIs y en algunos casos inteligencia artificial.</p>
-        <p>En los primeros años, los sitios eran puramente informativos y muy básicos. Con el tiempo surgieron navegadores más avanzados, se incorporaron imágenes, estilos y más tarde lenguajes como JavaScript. Hoy en día los sitios web son dinámicos, interactivos y fundamentales en la vida diaria.</p>
-      </section>
+  #volver-arriba:hover {
+    background: var(--accent-light);
+    transform: scale(1.1);
+  }
 
-      <section id="como-hacer" class="card">
-        <h2>Cómo hacer un sitio web (una guía resumida)</h2>
-        <ol>
-          <li><strong>Planifica:</strong> define el objetivo, público, contenidos y estructura de tu web.</li>
-          <li><strong>Elige la vía:</strong> usar una plantilla (Wix/Google Sites/Webnode) o programar con código (HTML, CSS básico).</li>
-          <li><strong>Diseño:</strong> selecciona la plantilla o dibuja un esquema de cómo quieres que se vea.</li>
-          <li><strong>Desarrollo:</strong> si usas código, crea archivos como <code>index.html</code> y <code>styles.css</code>. Si usas plantilla, edita los bloques prediseñados.</li>
-          <li><strong>Contenido:</strong> agrega textos, imágenes, enlaces y metadatos relevantes.</li>
-          <li><strong>Pruebas:</strong> revisa en diferentes navegadores y dispositivos.</li>
-          <li><strong>Publica:</strong> sube tu web a un hosting y compra un dominio o publica directamente desde la plataforma usada.</li>
-          <li><strong>Mantenimiento:</strong> actualiza, mejora y corrige errores regularmente.</li>
-        </ol>
-        <p class="muted">Tip: Usa la extensión Live Server en VS Code para ver cambios al instante mientras programas.</p>
-      </section>
+  /* Fondo animado de gradiente */
+  body {
+    background: linear-gradient(-45deg, #f1f5f9, #dbeafe, #bfdbfe, #f1f5f9);
+    background-size: 400% 400%;
+    animation: fondoAnimado 15s ease infinite;
+  }
 
-      <section id="pasos-practicos" class="card">
-        <h2>Ejemplo mínimo (archivos)</h2>
-        <p>Si eliges programar desde cero, crea al menos estos archivos:</p>
-        <pre>index.html
-styles.css
-script.js (opcional)</pre>
-        <p>En VS Code guarda <code>index.html</code> y ábrelo con Live Server para visualizar.</p>
-      </section>
-    </div>
-  </main>
+  @keyframes fondoAnimado {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+</style>
+<!-- Botón flotante -->
+<button id="volver-arriba" title="Volver arriba">↑</button>
 
-  <footer>
-    <div class="container">
-    </div>
-  </footer>
-
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
-      });
+<script>
+  // --- EFECTO DE APARICIÓN AL HACER SCROLL ---
+  const elementos = document.querySelectorAll("[data-animar]");
+  const mostrarElemento = () => {
+    const scrollTop = window.scrollY + window.innerHeight;
+    elementos.forEach(el => {
+      if (el.offsetTop < scrollTop - 100) {
+        el.classList.add("visible");
+      }
     });
+  };
+  window.addEventListener("scroll", mostrarElemento);
+  mostrarElemento();
+
+  // --- BOTÓN VOLVER ARRIBA ---
+  const btnArriba = document.getElementById("volver-arriba");
+  window.addEventListener("scroll", () => {
+    btnArriba.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  btnArriba.addEventListener("click", () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  });
+</script>
+
+<body>
+
+<header>
+  <h1>Proyecto de Investigación — Cómo crear sitios web</h1>
+  <nav>
+    <a href="#intro">Introducción</a>
+    <a href="#historia">Historia</a>
+    <a href="#importancia">Importancia</a>
+    <a href="#tipos">Tipos</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#lenguajes">Lenguajes</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#comparacion">Comparación</a>
+    <a href="#curiosidades">Curiosidades</a>
+    <a href="#conclusion">Conclusión</a>
+    <a href="#bibliografia">Bibliografía</a>
+  </nav>
+</header>
+
+<main>
+  <section id="intro">
+    <h2>Introducción</h2>
+    <p>En la actualidad, los sitios web son esenciales para compartir información, ofrecer servicios, estudiar y comunicarse. Este proyecto tiene como objetivo comprender cómo se crean los sitios web, desde su estructura básica hasta las herramientas modernas que facilitan su diseño. Además, busca motivar a los estudiantes a interesarse por la programación y el diseño digital, áreas con gran demanda en el mundo laboral.</p>
+  </section>
+
+  <section id="historia" class="card" data-animar>
+    <h2>Historia de los sitios web</h2>
+    <p>La historia de los sitios web comienza en 1989 cuando el científico británico Tim Berners-Lee propuso el sistema conocido como “World Wide Web” en el CERN. Su idea consistía en conectar documentos mediante enlaces de texto (hipervínculos), dando origen a la primera página web en 1991.</p>
+    <p>Con el tiempo, la web evolucionó: primero fueron páginas estáticas (HTML puro), luego se incorporaron imágenes y estilos (CSS), y más tarde surgió la web dinámica gracias a lenguajes como JavaScript y PHP. Hoy, la web es un entorno interactivo donde se combinan bases de datos, inteligencia artificial y diseño responsivo.</p>
+  </section>
+
+  <section id="importancia">
+    <h2>Importancia de los sitios web</h2>
+    <p>Los sitios web son la principal herramienta de comunicación digital. Permiten a empresas, instituciones y personas llegar a un público global. En la educación, fomentan el aprendizaje virtual; en los negocios, facilitan la venta de productos; y en la ciencia, permiten difundir investigaciones. Además, crear un sitio web desarrolla habilidades técnicas, creativas y de resolución de problemas.</p>
+  </section>
+
+  <section id="tipos">
+    <h2>Tipos de sitios web</h2>
+    <ul>
+      <li><strong>Educativos:</strong> plataformas como Khan Academy o Duolingo.</li>
+      <li><strong>Comerciales:</strong> tiendas en línea como Amazon o Mercado Libre.</li>
+      <li><strong>Informativos:</strong> portales de noticias y blogs.</li>
+      <li><strong>Redes sociales:</strong> Facebook, Instagram, TikTok.</li>
+      <li><strong>Entretenimiento:</strong> Netflix, YouTube o Spotify.</li>
+      <li><strong>Institucionales:</strong> sitios de escuelas, gobiernos y ONGs.</li>
+    </ul>
+  </section>
+
+  <section id="herramientas">
+    <h2>Herramientas para crear sitios web</h2>
+    <p>Existen muchas herramientas que facilitan la creación de un sitio, incluso sin saber programar:</p>
+    <ul>
+      <li><strong>Google Sites:</strong> ideal para proyectos escolares y pequeños portales informativos.</li>
+      <li><strong>Wix:</strong> permite crear sitios profesionales arrastrando y soltando elementos.</li>
+      <li><strong>WordPress:</strong> la plataforma más usada del mundo, ideal para blogs y empresas.</li>
+      <li><strong>Webnode y Weebly:</strong> opciones sencillas para principiantes.</li>
+    </ul>
+    <p>También hay programas para programar manualmente como Visual Studio Code, Sublime Text o Atom.</p>
+  </section>
+
+  <section id="lenguajes">
+    <h2>Lenguajes utilizados</h2>
+    <ul>
+      <li><strong>HTML:</strong> define la estructura de la página (títulos, párrafos, imágenes).</li>
+      <li><strong>CSS:</strong> controla el diseño, colores y estilos.</li>
+      <li><strong>JavaScript:</strong> agrega interactividad y animaciones.</li>
+      <li><strong>PHP / Python:</strong> permiten procesar datos en el servidor.</li>
+    </ul>
+  </section>
+
+  <section id="proceso">
+    <h2>Proceso de creación de un sitio web</h2>
+    <ol>
+      <li><strong>Planificación:</strong> definir el propósito y contenido.</li>
+      <li><strong>Diseño:</strong> crear un esquema o boceto visual.</li>
+      <li><strong>Desarrollo:</strong> escribir el código o usar una plantilla.</li>
+      <li><strong>Pruebas:</strong> revisar errores y compatibilidad.</li>
+      <li><strong>Publicación:</strong> subir la web a Internet mediante un hosting y dominio.</li>
+      <li><strong>Mantenimiento:</strong> actualizar información y corregir fallos.</li>
+    </ol>
+  </section>
+
+  <section id="comparacion">
+    <h2>Comparación entre plataformas y programación</h2>
+    <p><strong>Ventajas de usar plataformas:</strong> fácil, rápida, sin necesidad de conocimientos técnicos. Ideal para principiantes.</p>
+    <p><strong>Desventajas:</strong> menor personalización y dependencia de la plataforma.</p>
+    <p><strong>Ventajas de programar desde cero:</strong> libertad total, personalización y aprendizaje técnico.</p>
+    <p><strong>Desventajas:</strong> requiere más tiempo, práctica y conocimientos.</p>
+  </section>
+
+  <section id="curiosidades">
+    <h2>Curiosidades sobre la web</h2>
+    <ul>
+      <li>El primer sitio web aún está disponible en línea en su forma original.</li>
+      <li>Google procesa más de 8 mil millones de búsquedas diarias.</li>
+      <li>El 60% del tráfico web mundial proviene de teléfonos móviles.</li>
+      <li>Existen más de 1.800 millones de sitios web en todo el mundo.</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusión</h2>
+    <p>Crear un sitio web no solo es aprender a programar, sino también a comunicar, diseñar y compartir ideas. Este proyecto nos permitió conocer las distintas herramientas disponibles y valorar la importancia del desarrollo web en la sociedad actual. Aprendimos que todos pueden crear su propio espacio digital con creatividad, paciencia y dedicación.</p>
+  </section>
+
+  <section id="bibliografia">
+    <h2>Bibliografía</h2>
+    <ul>
+      <li>Berners-Lee, T. (1991). The World Wide Web Project. CERN.</li>
+      <li>Mozilla Developer Network. “Introducción a HTML y CSS”.</li>
+      <li>W3Schools. “Learn Web Development”.</li>
+      <li>Google Sites, Wix y WordPress. Guías oficiales de creación web.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Expotecnia — C.R.E.S.R — 1ro B BTI — Espacios Digitales 
+
+<button id="top-btn">↑</button>
+
+<script>
+  // Aparición con scroll
+  const secciones = document.querySelectorAll("section");
+  const mostrar = () => {
+    secciones.forEach(sec => {
+      const pos = sec.getBoundingClientRect().top;
+      if (pos < window.innerHeight - 100) sec.classList.add("visible");
+    });
+  };
+  window.addEventListener("scroll", mostrar);
+  mostrar();
+
+  // Botón volver arriba
+  const btn = document.getElementById("top-btn");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 250 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // Desplazamiento suave entre secciones
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
